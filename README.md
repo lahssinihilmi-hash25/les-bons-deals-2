@@ -7,8 +7,8 @@ Cette expérimentation présente des destinations européennes et huit parcours 
 ## Publication gratuite — GitHub Pages
 
 1. Ouvrir [Settings → Pages](https://github.com/lahssinihilmi-hash25/les-bons-deals-2/settings/pages).
-2. Sous **Build and deployment → Source**, choisir **GitHub Actions**.
-3. Le workflow `.github/workflows/pages.yml` publie le site. Relancer via **Actions → Publier découverte Europe → Run workflow** au besoin.
+2. Sous **Build and deployment → Source**, choisir **Deploy from a branch**.
+3. Dans **Branch**, sélectionner **main**, puis **/(root)** et cliquer sur **Save**. La publication s'effectue directement, sans autre automatisation à configurer.
 4. Vérifier le statut du déploiement avant de partager : lien attendu `https://lahssinihilmi-hash25.github.io/les-bons-deals-2/` (à confirmer sur la page Pages).
 
 **Ne pas rendre public** `lahssinihilmi-hash25/les-bons-deals` (il contient le moteur et les données privées).
