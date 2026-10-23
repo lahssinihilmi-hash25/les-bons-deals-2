@@ -1,0 +1,46 @@
+name: Publier découverte Europe
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupérer les fichiers publics
+        uses: actions/checkout@v4
+      - name: Vérifier que seuls les fichiers de découverte seront publiés
+        run: |
+          test -f index.html
+          test -f choix/barcelone.html
+          test -f choix/lyon.html
+          test -f choix/marseille.html
+          test -f choix/londres.html
+          test -f choix/prix-total.html
+          test -f choix/vol-direct.html
+          test -f choix/dates-flexibles.html
+          test -f choix/destination.html
+          ! grep -ri -E '(TRAVELPAYOUTS_TOKEN|SERPAPI_API_KEY|DUFFEL_TOKEN|api_key=)' index.html choix/ assets/
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Préparer les pages statiques
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - name: Déployer la découverte Europe
+        id: deployment
+        uses: actions/deploy-pages@v4
