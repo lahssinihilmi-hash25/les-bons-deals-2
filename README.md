@@ -13,16 +13,17 @@ Cette expérimentation présente des destinations européennes et huit parcours 
 
 **Ne pas rendre public** `lahssinihilmi-hash25/les-bons-deals` (il contient le moteur et les données privées).
 
-## Mesure de l'intérêt (NON activée)
+## Mesure de l'intérêt — Cloudflare Web Analytics activée dans le code
 
-Le site contient une page distincte pour chacun des huit choix. Cette architecture permet d'utiliser **Cloudflare Web Analytics**, gratuit et sans cookies, pour obtenir des pages vues agrégées :
-- `/index.html` : présentation (visites de la page).
+Les neuf pages publiques portent la balise de mesure Cloudflare Web Analytics fournie par le propriétaire. Le même jeton de site public est appliqué sur l'accueil et les huit pages de choix.
+
+- `/index.html` : consultations de la page de découverte.
 - `/choix/barcelone.html`, `/choix/lyon.html`, `/choix/marseille.html`, `/choix/londres.html` : intérêt par destination.
-- `/choix/prix-total.html`, `/choix/vol-direct.html`, `/choix/dates-flexibles.html`, `/choix/destination.html` : priorités de voyage.
+- `/choix/prix-total.html`, `/choix/vol-direct.html`, `/choix/dates-flexibles.html`, `/choix/destination.html` : priorité explorée.
 
-**Pour activer Cloudflare** : ouvrir [Web Analytics](https://dash.cloudflare.com/?to=/:account/web-analytics) → Add a site → nom d'hôte `lahssinihilmi-hash25.github.io` → copier la balise `<script>` fournie (token de site public, pas une clé API). Coller le script avant `</body>` dans `index.html` et les pages du dossier `choix`. Les modifications déploieront automatiquement les pages.
+Chaque clic mène à une page distincte. Les statistiques Cloudflare montrent les vues de pages; une vue peut représenter un nouveau clic ou une nouvelle visite, pas nécessairement un visiteur unique. Aucun événement de clic personnalisé n'est envoyé.
 
-Le service Cloudflare ne prend pas en charge les événements personnalisés; nous comptons donc les vues des pages de choix, et non les interactions brutes ou des « clients ». Les comptages ne sont pas uniques par personne. Vérifier la conformité de la politique de confidentialité avant d'activer les mesures.
+Lire [confidentialite.html](confidentialite.html) pour les renseignements sur les statistiques. Les statistiques réelles sont accessibles uniquement dans le compte Cloudflare du propriétaire. Elles ne peuvent pas être vérifiées dans GitHub seul.
 
 ## Interprétation
 
